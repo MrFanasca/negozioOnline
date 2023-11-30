@@ -29,7 +29,7 @@ public class Main {
 		 quantità disponibili) */
 		
 		Scanner sc = new Scanner(System.in);
-		negozio n = new negozio();
+		Negozio n = new Negozio();
 		
 		String risposta;
 		
@@ -39,6 +39,10 @@ public class Main {
 			
 		
 		System.out.println("Vuoi inserire un prodotto in magazzino");
+		
+		
+		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
+		// richiedere la password, per gli altri due indirizzare ad un metodo specifico
 		
 	}
 

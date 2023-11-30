@@ -1,20 +1,23 @@
 package org.generation.italy;
 
-public class prodotto {
+public class Prodotto {
 
 	private String codice, descrizione;
 	private Float prezzo, sconto;
 	private Integer quantitàDisponibile;
 	
-	public prodotto(String codice, String descrizione, Float prezzo, Integer quantitàDisponibile) 
+	public Prodotto(String codice, String descrizione, Float prezzo, Integer quantitàDisponibile) 
 	{
 		this.codice = codice;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
-		sconto=0f;
+		sconto=0f;														// sconto pari allo 0% di default
 		this.quantitàDisponibile = quantitàDisponibile;
 	}
 
+	
+	
+	
 	public String getCodice() 
 	{
 		return codice;
