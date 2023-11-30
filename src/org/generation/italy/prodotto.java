@@ -6,12 +6,12 @@ public class prodotto {
 	private Float prezzo, sconto;
 	private Integer quantitàDisponibile;
 	
-	public prodotto(String codice, String descrizione, Float prezzo, Float sconto, Integer quantitàDisponibile) 
+	public prodotto(String codice, String descrizione, Float prezzo, Integer quantitàDisponibile) 
 	{
 		this.codice = codice;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
-		this.sconto = sconto;
+		sconto=0f;
 		this.quantitàDisponibile = quantitàDisponibile;
 	}
 
