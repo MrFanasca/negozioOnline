@@ -30,8 +30,11 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		Negozio n = new Negozio();
+		Carrello c = new Carrello();
 		
-		String risposta;
+		String codice, descrizione, risposta;
+		Float prezzo, sconto;
+		Integer quantità;
 		
 		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
 		// richiedere la password, per gli altri due indirizzare ad un metodo specifico
@@ -52,7 +55,15 @@ public class Main {
 			if (risposta.equals("1234"))
 			{
 				System.out.println("Inserisci il prodotto seguendo le indicazioni");
-				n.aggiungiProdotto();
+				System.out.println("Inserisci il codice");
+				codice=sc.nextLine();
+				System.out.println("Inserisci la descrizione");
+				descrizione=sc.nextLine();
+				System.out.println("Inserisci il prezzo");
+				prezzo=Float.parseFloat(sc.nextLine());
+				System.out.println("Inserisci la quantità");
+				quantità= Integer.parseInt(sc.nextLine());
+				n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
 			}
 				
 			break;
@@ -65,12 +76,21 @@ public class Main {
 			risposta=sc.nextLine();
 			if (risposta.equals("1234"))
 			{
-				
+				System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
+				codice=sc.nextLine();
+				System.out.println("Inserire lo sconto voluto");
+				sconto=Float.parseFloat(sc.nextLine());
+				n.applicaSconto(codice,sconto);
 			}
 			break;
 		case "4":									// Aggiungi al carrello
 			System.out.println("Quale prodotto vuoi comperare?");
-			
+			// inserire codice e quantità
+			System.out.println("Inserire il codice del prodotto da inserire nel carrello");
+			codice=sc.nextLine();
+			System.out.println("Inserire il codice del prodotto da inserire nel carrello");
+			quantità=Integer.parseInt(sc.nextLine());
+			c.aggiungiCarrello(codice, quantità);
 			break;
 		default:
 			System.out.println("Scelta non valida");

@@ -1,31 +1,18 @@
 package org.generation.italy;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Negozio {
 
 	public HashMap <String, Prodotto> prodottiMagazzino = new HashMap<>();
-	Scanner sc = new Scanner (System.in);
-	
-	public void aggiungiProdotto ()
+
+	// metodo per inserire un nuovo prodotto
+	public void aggiungiProdotto (String codice, String descrizione, Float prezzo, Integer quantità)
 	{
-		String codice, descrizione;
-		Float prezzo;
-		Integer quantità;
-		
-		System.out.println();
-		System.out.println("Inserisci il codice");
-		codice=sc.nextLine();
-		System.out.println("Inserisci la descrizione");
-		descrizione=sc.nextLine();
-		System.out.println("Inserisci il prezzo");
-		prezzo=Float.parseFloat(sc.nextLine());
-		System.out.println("Inserisci la quantità");
-		quantità= Integer.parseInt(sc.nextLine());
 		prodottiMagazzino.put(codice,new Prodotto(codice,descrizione,prezzo,quantità));
 	}
-		
+
+	// metodo per elencare i prodotti tramite for each	
 	public void elencoProdotti ()
 	{
 		for (String n:prodottiMagazzino.keySet())
@@ -36,9 +23,9 @@ public class Negozio {
 			
 	}
 	
-	
-	// metodo per elencare i prodotti tramite for each
-	
 	// metodo per inserire lo sconto ad un determinato prodotto
-	
+	public void applicaSconto (String codice, Float sconto)
+	{
+		prodottiMagazzino.get(codice).setSconto(sconto);
+	}
 }
