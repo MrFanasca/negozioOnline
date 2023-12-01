@@ -11,7 +11,7 @@ public class Negozio {
 	public void aggiungiProdotto ()
 	{
 		String codice, descrizione;
-		Float prezzo, sconto;
+		Float prezzo;
 		Integer quantità;
 		
 		System.out.println();
@@ -26,7 +26,15 @@ public class Negozio {
 		prodottiMagazzino.put(codice,new Prodotto(codice,descrizione,prezzo,quantità));
 	}
 		
-		
+	public void elencoProdotti ()
+	{
+		for (String n:prodottiMagazzino.keySet())
+		{
+			System.out.println("\nCodice prodotto: "+ n +"\tDescrizione: "+ prodottiMagazzino.get(n).getDescrizione());
+			System.out.println("Prezzo: " + prodottiMagazzino.get(n).getPrezzo() + "\tQuantità: " + prodottiMagazzino.get(n).getQuantitàDisponibile());
+		}
+			
+	}
 	
 	
 	// metodo per elencare i prodotti tramite for each

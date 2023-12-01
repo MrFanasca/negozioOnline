@@ -33,6 +33,8 @@ public class Main {
 		
 		String risposta;
 		
+		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
+		// richiedere la password, per gli altri due indirizzare ad un metodo specifico
 		System.out.println("Benvenuto, nell' e-commerce der mejo gruppo?");
 		do
 		{
@@ -44,22 +46,38 @@ public class Main {
 
 		risposta = sc.nextLine();
 		switch (risposta) {
-		case "1":
-			System.out.println("");
+		case "1":									// Inserimento prodotti
+			System.out.println("Inserisci la Password");
+			risposta=sc.nextLine();
+			if (risposta.equals("1234"))
+			{
+				System.out.println("Inserisci il prodotto seguendo le indicazioni");
+				n.aggiungiProdotto();
+			}
+				
 			break;
-		case "2":
-			System.out.println("");
+		case "2":									// Elenco dei prodotti disponibili
+			System.out.println("Questi sono i nostri prodotti disponibili");
+			n.elencoProdotti();
 			break;
-		case "3":
-			System.out.println("");
+		case "3":									// Applica uno sconto
+			System.out.println("Inserisci la Password");
+			risposta=sc.nextLine();
+			if (risposta.equals("1234"))
+			{
+				
+			}
 			break;
-		case "4":
-			System.out.println("");
+		case "4":									// Aggiungi al carrello
+			System.out.println("Quale prodotto vuoi comperare?");
+			
 			break;
-
 		default:
 			System.out.println("Scelta non valida");
-		}while (true);
+			}
+		System.out.println("\nVuoi fare altro? (s/n)");
+		risposta=sc.nextLine();
+		}while (risposta.equals("s"));
 		
 		
 		
@@ -72,34 +90,16 @@ public class Main {
 		
 		
 		
-		if (risposta.equals("s"))
-		{
-			while (risposta.equals("s")) 
-			{
-				System.out.println("Cosa preferisci fare? (aggiungi prodotto/applica sconto)");
-				risposta=sc.nextLine();
-				
-				n.aggiungiProdotto();
-				System.out.println("Vuoi continuare? (s/n)");
-				risposta=sc.nextLine();
-			};
-		}
-		else if (risposta.equals("n"))
-		{
-			
-		}
-		else
-			System.out.println("Risposta non valida");
+		
 				
 	
 		
 		
 		
-		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
-		// richiedere la password, per gli altri due indirizzare ad un metodo specifico
+
 		
 		
-}
+
 		
 	}
 
