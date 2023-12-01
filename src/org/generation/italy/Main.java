@@ -83,14 +83,34 @@ public class Main {
 				n.applicaSconto(codice,sconto);
 			}
 			break;
-		case "4":									// Aggiungi al carrello
-			System.out.println("Quale prodotto vuoi comperare?");
-			// inserire codice e quantità
-			System.out.println("Inserire il codice del prodotto da inserire nel carrello");
-			codice=sc.nextLine();
-			System.out.println("Inserire il codice del prodotto da inserire nel carrello");
-			quantità=Integer.parseInt(sc.nextLine());
-			c.aggiungiCarrello(codice, quantità);
+		case "4": 									// Aggiungi al carrello
+			do
+			{
+				System.out.println("Quale prodotto vuoi comperare?");
+				// inserire codice e quantità
+				System.out.println("\nInserire il codice del prodotto da inserire nel carrello");
+				codice=sc.nextLine();
+				// visualizziamo il prodotto desiderato
+				System.out.println("\nCodice prodotto: "+ codice +"\tDescrizione: "+ n.prodottiMagazzino.get(codice).getDescrizione());
+				System.out.println("Prezzo: " + n.prodottiMagazzino.get(codice).getPrezzo() + "\tQuantità: " + n.prodottiMagazzino.get(codice).getQuantitàDisponibile());
+				// visualizza un possibile sconto
+				if (n.prodottiMagazzino.get(codice).getSconto()>0)
+				{
+					System.out.println("\nSconto su questo articolo:");
+				 	n.visualizzaSconto(codice);
+				 	
+				}
+				// inserire la quantità richiesta
+				System.out.println("\nInserire la quantità del prodotto da inserire nel carrello");
+				quantità=Integer.parseInt(sc.nextLine());
+				c.aggiungiCarrello(codice, quantità);	
+				System.out.println("Vuoi proseguire con la spesa? (s/n)");
+			}	while (risposta.equals("n"));
+			
+			System.out.println("\nQuesti sono i prodotti nel carrello");
+			c.elencoProdottiCarrello();
+			
+			
 			break;
 		default:
 			System.out.println("Scelta non valida");

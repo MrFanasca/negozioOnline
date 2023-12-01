@@ -1,7 +1,6 @@
 package org.generation.italy;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Carrello {
 	
@@ -17,16 +16,28 @@ public class Carrello {
 		
 		if (n.prodottiMagazzino.containsKey(codice))
 		{
-			if (quantità<=n.prodottiMagazzino.get(codice).getQuantitàDisponibile())
-			prodottiSelezionati.put(codice, quantità);
-			n.prodottiMagazzino.get(codice).setQuantitàDisponibile(n.prodottiMagazzino.get(codice).getQuantitàDisponibile()-quantità);
+			if (quantità<=n.prodottiMagazzino.get(codice).getQuantitàDisponibile())		// controllo se la quantità inserita è minore della quantità disponibile
+			{
+				prodottiSelezionati.put(codice, quantità);
+				// n.prodottiMagazzino.get(codice).setQuantitàDisponibile(n.prodottiMagazzino.get(codice).getQuantitàDisponibile()-quantità);		// imposto la nuova quantità disponibile
+			}
+			else
+				System.out.println("Quantità non disponibile");
 		}
 		else
 			System.out.println("Prodotto non presente");
 	}
 	
 	// metodo per elencare i prodotti nel carrello tramite for each
-	
+	public void elencoProdottiCarrello ()
+	{
+		for (String i:prodottiSelezionati.keySet())
+		{
+			System.out.println("\nCodice prodotto: "+ i +"\tDescrizione: "+ n.prodottiMagazzino.get(i).getDescrizione());
+			System.out.println("Prezzo: " + n.prodottiMagazzino.get(i).getPrezzo() + "\tQuantità: " + n.prodottiMagazzino.get(i).getQuantitàDisponibile());
+		}
+			
+	}
 	// ?se volessi inserire un prodotto nel carrello, ho bisogno di reinserire tutte le caratteristiche?
 	
 }
