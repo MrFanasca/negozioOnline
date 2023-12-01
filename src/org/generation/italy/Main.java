@@ -30,7 +30,7 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		Negozio n = new Negozio();
-		Carrello c = new Carrello();
+		Carrello c = new Carrello(n);			// Carrello c = 
 		
 		String codice, descrizione, risposta;
 		Float prezzo, sconto, costoTotale=0f;

@@ -5,9 +5,14 @@ import java.util.HashMap;
 public class Carrello {
 	
 	// HashMap simile a quello presente nell'oggetto Negozio contenente il codice del prodotto e la quantità desiderata
-	Negozio n = new Negozio();
+	Negozio n;		// chiedere a Enzo Negozio n = new Negozio();
 	
 	public HashMap <String, Integer> prodottiSelezionati = new HashMap<>();
+	
+	public Carrello (Negozio n)				// aggiunto dopo
+	{
+		this.n=n;
+	}
 	
 	// metodo simile a quello in Negozio ma con il controllo sul prodotto, ossia verificare se esiste nel magazzino
 	// e se si, si aggiunge al nuovo HashMap del carrello
@@ -45,6 +50,7 @@ public class Carrello {
 		{
 			costoTotale+=(1-(n.prodottiMagazzino.get(i).getSconto()/100))*n.prodottiMagazzino.get(i).getPrezzo()*prodottiSelezionati.get(i).floatValue();
 		}
+		System.out.println(costoTotale);
 	}
 	
 }

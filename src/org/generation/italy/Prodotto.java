@@ -24,8 +24,8 @@ public class Prodotto {
 	}
 
 	public void setCodice(String codice) 
-	{
-		if (!codice.isEmpty())					
+	{		
+		if (!codice.isEmpty())
 			this.codice = codice;
 	}
 

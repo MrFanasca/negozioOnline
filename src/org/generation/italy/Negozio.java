@@ -7,9 +7,9 @@ public class Negozio {
 	public HashMap <String, Prodotto> prodottiMagazzino = new HashMap<>();
 
 	// metodo per inserire un nuovo prodotto
-	public void aggiungiProdotto (String codice, String descrizione, Float prezzo, Integer quantità)
+	public void aggiungiProdotto (String codice, String descrizione, Float prezzo, Integer quantitàDisponibile)
 	{
-		prodottiMagazzino.put(codice,new Prodotto(codice,descrizione,prezzo,quantità));
+		prodottiMagazzino.put(codice,new Prodotto(codice,descrizione,prezzo,quantitàDisponibile));
 	}
 
 	// metodo per elencare i prodotti tramite for each	
