@@ -39,5 +39,12 @@ public class Carrello {
 			
 	}
 	
+	public void calcoloSpessa (Float costoTotale)
+	{
+		for (String i:prodottiSelezionati.keySet())
+		{
+			costoTotale+=(1-(n.prodottiMagazzino.get(i).getSconto()/100))*n.prodottiMagazzino.get(i).getPrezzo()*prodottiSelezionati.get(i).floatValue();
+		}
+	}
 	
 }

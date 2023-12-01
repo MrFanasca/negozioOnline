@@ -27,7 +27,7 @@ public class Negozio {
 	public void applicaSconto (String codice, Float sconto)
 	{
 		prodottiMagazzino.get(codice).setSconto(sconto);
-		prodottiMagazzino.get(codice).setPrezzo((1-sconto/100)*prodottiMagazzino.get(codice).getPrezzo());
+		// (1-sconto/100)*prodottiMagazzino.get(codice).getPrezzo();
 	}
 	
 	public void visualizzaSconto (String codice)

@@ -33,7 +33,7 @@ public class Main {
 		Carrello c = new Carrello();
 		
 		String codice, descrizione, risposta;
-		Float prezzo, sconto;
+		Float prezzo, sconto, costoTotale=0f;
 		Integer quantità;
 		
 		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
@@ -99,18 +99,18 @@ public class Main {
 				{
 					System.out.println("\nSconto su questo articolo:");
 				 	n.visualizzaSconto(codice);
-				 	
 				}
 				// inserire la quantità richiesta
 				System.out.println("\nInserire la quantità del prodotto da inserire nel carrello");
 				quantità=Integer.parseInt(sc.nextLine());
 				c.aggiungiCarrello(codice, quantità);	
+				System.out.println("\nQuesti sono i prodotti nel carrello");
+				c.elencoProdottiCarrello();
 				System.out.println("Vuoi proseguire con la spesa? (s/n)");
 			}	while (risposta.equals("n"));
 			
-			System.out.println("\nQuesti sono i prodotti nel carrello");
-			c.elencoProdottiCarrello();
-			
+			System.out.println("\nCosto totale: ");
+			c.calcoloSpessa(costoTotale);
 			
 			break;
 		default:
@@ -120,28 +120,8 @@ public class Main {
 		risposta=sc.nextLine();
 		}while (risposta.equals("s"));
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				
-	
-		
-		
-		
-
-		
-		
-
-		
+		System.out.println("Arrivederci");
+		sc.close();
 	}
 
 }
