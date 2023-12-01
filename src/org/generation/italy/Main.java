@@ -33,16 +33,73 @@ public class Main {
 		
 		String risposta;
 		
-		System.out.println("Benvenuto, è lei il mio dominatore? (s/n)");
-		risposta=sc.nextLine().toLowerCase();
-		if (risposta.equals("s"))
-			
+		System.out.println("Benvenuto, nell' e-commerce der mejo gruppo?");
+		do
+		{
+		System.out.println("1 - Inserimento prodotto");
+		System.out.println("2 - Elenco prodotti");
+		System.out.println("3 - Applica sconto");
+		System.out.println("4 - Vendita prodotti");
+		System.out.print("\nChe operazione vuoi compiere?");
+
+		risposta = sc.nextLine();
+		switch (risposta) {
+		case "1":
+			System.out.println("");
+			break;
+		case "2":
+			System.out.println("");
+			break;
+		case "3":
+			System.out.println("");
+			break;
+		case "4":
+			System.out.println("");
+			break;
+
+		default:
+			System.out.println("Scelta non valida");
+		}while (true);
 		
-		System.out.println("Vuoi inserire un prodotto in magazzino");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if (risposta.equals("s"))
+		{
+			while (risposta.equals("s")) 
+			{
+				System.out.println("Cosa preferisci fare? (aggiungi prodotto/applica sconto)");
+				risposta=sc.nextLine();
+				
+				n.aggiungiProdotto();
+				System.out.println("Vuoi continuare? (s/n)");
+				risposta=sc.nextLine();
+			};
+		}
+		else if (risposta.equals("n"))
+		{
+			
+		}
+		else
+			System.out.println("Risposta non valida");
+				
+	
+		
 		
 		
 		// syso per le 4 possibilità di interazione. Per l'inserimento dei prodotti e dell'applicazione dello sconto
 		// richiedere la password, per gli altri due indirizzare ad un metodo specifico
+		
+		
+}
 		
 	}
 

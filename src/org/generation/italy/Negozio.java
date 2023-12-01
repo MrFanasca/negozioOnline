@@ -1,21 +1,33 @@
 package org.generation.italy;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Negozio {
 
 	public HashMap <String, Prodotto> prodottiMagazzino = new HashMap<>();
-
+	Scanner sc = new Scanner (System.in);
 	
 	public void aggiungiProdotto ()
 	{
-		System.out.println();
-		// creiamo delle variabili 'codice', 'descrizione', 'prezzo' e 'quantitàDisponibile' le chiediamo mano a mano
-		// in questo metodo e poi le inseriamo nel put sottostante, il tutto in un cicli do-while cosi da ripetere
-		// quante volte vogliamo
+		String codice, descrizione;
+		Float prezzo, sconto;
+		Integer quantità;
 		
-		prodottiMagazzino.put("codice", new Prodotto ("codice","descrizione","prezzo","quantitàDisponibile"));
+		System.out.println();
+		System.out.println("Inserisci il codice");
+		codice=sc.nextLine();
+		System.out.println("Inserisci la descrizione");
+		descrizione=sc.nextLine();
+		System.out.println("Inserisci il prezzo");
+		prezzo=Float.parseFloat(sc.nextLine());
+		System.out.println("Inserisci la quantità");
+		quantità= Integer.parseInt(sc.nextLine());
+		prodottiMagazzino.put(codice,new Prodotto(codice,descrizione,prezzo,quantità));
 	}
+		
+		
+	
 	
 	// metodo per elencare i prodotti tramite for each
 	
