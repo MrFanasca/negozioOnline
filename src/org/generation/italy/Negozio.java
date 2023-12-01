@@ -27,11 +27,11 @@ public class Negozio {
 	public void applicaSconto (String codice, Float sconto)
 	{
 		prodottiMagazzino.get(codice).setSconto(sconto);
-		prodottiMagazzino.
+		prodottiMagazzino.get(codice).setPrezzo((1-sconto/100)*prodottiMagazzino.get(codice).getPrezzo());
 	}
 	
 	public void visualizzaSconto (String codice)
 	{
-		prodottiMagazzino.get(codice).getSconto();
+		System.out.println(prodottiMagazzino.get(codice).getSconto() + "%");
 	}
 }

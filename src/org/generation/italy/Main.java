@@ -52,7 +52,7 @@ public class Main {
 		case "1":									// Inserimento prodotti
 			System.out.println("Inserisci la Password");
 			risposta=sc.nextLine();
-			if (risposta.equals("1234"))
+			if (risposta.equals("EnzoSan"))
 			{
 				System.out.println("Inserisci il prodotto seguendo le indicazioni");
 				System.out.println("Inserisci il codice");
@@ -74,7 +74,7 @@ public class Main {
 		case "3":									// Applica uno sconto
 			System.out.println("Inserisci la Password");
 			risposta=sc.nextLine();
-			if (risposta.equals("1234"))
+			if (risposta.equals("EnzoSan"))
 			{
 				System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
 				codice=sc.nextLine();
@@ -86,6 +86,7 @@ public class Main {
 		case "4": 									// Aggiungi al carrello
 			do
 			{
+				n.elencoProdotti();
 				System.out.println("Quale prodotto vuoi comperare?");
 				// inserire codice e quantità
 				System.out.println("\nInserire il codice del prodotto da inserire nel carrello");

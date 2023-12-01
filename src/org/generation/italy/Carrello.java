@@ -38,6 +38,6 @@ public class Carrello {
 		}
 			
 	}
-	// ?se volessi inserire un prodotto nel carrello, ho bisogno di reinserire tutte le caratteristiche?
+	
 	
 }
