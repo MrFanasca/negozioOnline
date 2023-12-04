@@ -7,7 +7,7 @@ public class Carrello {
 	// HashMap simile a quello presente nell'oggetto Negozio contenente il codice del prodotto e la quantità desiderata
 	Negozio n;		// chiedere a Enzo Negozio n = new Negozio();
 	
-	public HashMap <String, Integer> prodottiSelezionati = new HashMap<>();
+	public HashMap <String, Integer> prodottiSelezionati = new HashMap<>();		// la stringa è il codice del prodotto e l'intero è la quantità desiderata
 	
 	public Carrello (Negozio n)				// aggiunto dopo
 	{
@@ -24,7 +24,6 @@ public class Carrello {
 			if (quantità<=n.prodottiMagazzino.get(codice).getQuantitàDisponibile())		// controllo se la quantità inserita è minore della quantità disponibile
 			{
 				prodottiSelezionati.put(codice, quantità);
-				// n.prodottiMagazzino.get(codice).setQuantitàDisponibile(n.prodottiMagazzino.get(codice).getQuantitàDisponibile()-quantità);		// imposto la nuova quantità disponibile
 			}
 			else
 				System.out.println("Quantità non disponibile");
@@ -39,18 +38,29 @@ public class Carrello {
 		for (String i:prodottiSelezionati.keySet())
 		{
 			System.out.println("\nCodice prodotto: "+ i +"\tDescrizione: "+ n.prodottiMagazzino.get(i).getDescrizione());
-			System.out.println("Prezzo: " + n.prodottiMagazzino.get(i).getPrezzo() + "\tQuantità: " + n.prodottiMagazzino.get(i).getQuantitàDisponibile());
+			System.out.println("Prezzo: " + n.prodottiMagazzino.get(i).getPrezzo() + "\tQuantità: " + prodottiSelezionati.get(i));
 		}
 			
 	}
 	
-	public void calcoloSpessa (Float costoTotale)
+	// calcolo del costo totale del carrello
+	public void calcoloSpesa (Float costoTotale)
 	{
 		for (String i:prodottiSelezionati.keySet())
 		{
 			costoTotale+=(1-(n.prodottiMagazzino.get(i).getSconto()/100))*n.prodottiMagazzino.get(i).getPrezzo()*prodottiSelezionati.get(i).floatValue();
 		}
 		System.out.println(costoTotale);
+	}
+	
+	// conferma il carrello
+	public void confermaCarrello ()
+	{
+		for (String i:prodottiSelezionati.keySet())
+		{
+			n.prodottiMagazzino.get(i).setQuantitàDisponibile(n.prodottiMagazzino.get(i).getQuantitàDisponibile()-prodottiSelezionati.get(i));		// imposto la nuova quantità disponibile
+		}
+		
 	}
 	
 }

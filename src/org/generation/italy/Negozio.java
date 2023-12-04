@@ -19,6 +19,11 @@ public class Negozio {
 		{
 			System.out.println("\nCodice prodotto: "+ n +"\tDescrizione: "+ prodottiMagazzino.get(n).getDescrizione());
 			System.out.println("Prezzo: " + prodottiMagazzino.get(n).getPrezzo() + "\tQuantità: " + prodottiMagazzino.get(n).getQuantitàDisponibile());
+			if (prodottiMagazzino.get(n).getSconto()>0)
+			{
+				System.out.println("\nSconto su questo articolo:");
+				visualizzaSconto(n);
+			}
 		}
 			
 	}
@@ -27,7 +32,6 @@ public class Negozio {
 	public void applicaSconto (String codice, Float sconto)
 	{
 		prodottiMagazzino.get(codice).setSconto(sconto);
-		// (1-sconto/100)*prodottiMagazzino.get(codice).getPrezzo();
 	}
 	
 	public void visualizzaSconto (String codice)
