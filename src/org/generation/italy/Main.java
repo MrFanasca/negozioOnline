@@ -64,44 +64,33 @@ public class Main {
 							switch (risposta) 
 							{
 								case "1":									// Inserimento prodotti
-									System.out.println("\nInserisci la Password");
-									risposta=sc.nextLine();
-									if (risposta.equals("EnzoSan"))
-									{
-										System.out.println("Segui le indicazioni per aggiungere il prodotto\nInserisci il codice");
-										codice=sc.nextLine();
-										System.out.println("Inserisci la descrizione");
-										descrizione=sc.nextLine();
-										System.out.println("Inserisci il prezzo");
-										prezzo=Float.parseFloat(sc.nextLine());
-										System.out.println("Inserisci la quantità");
-										quantità= Integer.parseInt(sc.nextLine());
-										n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
-									}
-									
+									System.out.println("Segui le indicazioni per aggiungere il prodotto\nInserisci il codice");
+									codice=sc.nextLine();
+									System.out.println("Inserisci la descrizione");
+									descrizione=sc.nextLine();
+									System.out.println("Inserisci il prezzo");
+									prezzo=Float.parseFloat(sc.nextLine());
+									System.out.println("Inserisci la quantità");
+									quantità= Integer.parseInt(sc.nextLine());
+									n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
 									break;
 								case "2":									// Elenco dei prodotti disponibili
 									System.out.println("\nQuesti sono i nostri prodotti disponibili");
 									n.elencoProdotti();
 									break;
 								case "3":									// Applica uno sconto
-									System.out.println("\nInserisci la Password");
-									risposta=sc.nextLine();
-									if (risposta.equals("EnzoSan"))
-									{
-										System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
-										codice=sc.nextLine();
-										System.out.println("Inserire lo sconto voluto");
-										sconto=Float.parseFloat(sc.nextLine());
-										n.applicaSconto(codice,sconto);
-									}
+									System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
+									codice=sc.nextLine();
+									System.out.println("Inserire lo sconto voluto");
+									sconto=Float.parseFloat(sc.nextLine());
+									n.applicaSconto(codice,sconto);
 									break;
 								default:
 									System.out.println("Scelta non valida");
 									break;
 								}
 							
-							System.out.println("\nVuoi fare altro? (s/n)");
+							System.out.println("\nVuoi continuare ad operare? (s/n)");
 							risposta=sc.nextLine();
 							}while (risposta.equals("s"));
 							break;
@@ -112,7 +101,6 @@ public class Main {
 				}
 				else
 					System.out.println("Password non valida, vuoi riprovare? (s/n)");
-				risposta=sc.nextLine();
 			}
 			else
 				System.out.println("Username non valido, vuoi riprovare? (s/n)");
