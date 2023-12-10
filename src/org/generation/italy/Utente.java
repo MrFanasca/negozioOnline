@@ -17,12 +17,16 @@ public class Utente {
 	
 	private String username, password, nome, cognome, tipologia;
 
-	private Utente (String username, String password, String nome, String cognome, String tipologia) {
+	public Utente (String username, String password, String nome, String cognome, String tipologia) {
 		this.username = username;
 		this.password = password;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.tipologia = tipologia;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public String getNome() {
