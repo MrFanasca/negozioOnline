@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Negozio {
 
 	public HashMap <String, Prodotto> prodottiMagazzino = new HashMap<>();
+	private Hashmap
 
 	// metodo per inserire un nuovo prodotto
 	public void aggiungiProdotto (String codice, String descrizione, Float prezzo, Integer quantitàDisponibile)
