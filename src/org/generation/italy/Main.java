@@ -52,152 +52,120 @@ public class Main {
 					n.benvenuto(username);
 					switch (n.menù(username))
 					{
-						case "Amministratore":
+						case "Amministratore":	// Azioni possibili dall'account amministratore
 							do
 							{
-							System.out.println("\n\n\n1 - Inserimento prodotto");
-							System.out.println("2 - Elenco prodotti");
-							System.out.println("3 - Applica sconto");
-							System.out.print("\nChe operazione vuoi compiere?");
+								System.out.println("\n\n\n1 - Inserimento prodotto");
+								System.out.println("2 - Elenco prodotti");
+								System.out.println("3 - Applica sconto");
+								System.out.print("\nChe operazione vuoi compiere?");
 
-							risposta = sc.nextLine();
-							switch (risposta) 
-							{
-								case "1":									// Inserimento prodotti
-									System.out.println("Segui le indicazioni per aggiungere il prodotto\nInserisci il codice");
-									codice=sc.nextLine();
-									System.out.println("Inserisci la descrizione");
-									descrizione=sc.nextLine();
-									System.out.println("Inserisci il prezzo");
-									prezzo=Float.parseFloat(sc.nextLine());
-									System.out.println("Inserisci la quantità");
-									quantità= Integer.parseInt(sc.nextLine());
-									n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
-									break;
-								case "2":									// Elenco dei prodotti disponibili
-									System.out.println("\nQuesti sono i nostri prodotti disponibili");
-									n.elencoProdotti();
-									break;
-								case "3":									// Applica uno sconto
-									System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
-									codice=sc.nextLine();
-									System.out.println("Inserire lo sconto voluto");
-									sconto=Float.parseFloat(sc.nextLine());
-									n.applicaSconto(codice,sconto);
-									break;
-								default:
-									System.out.println("Scelta non valida");
-									break;
-								}
+								risposta = sc.nextLine();
+								switch (risposta) 
+								{
+									case "1":									// Inserimento prodotti
+										System.out.println("Segui le indicazioni per aggiungere il prodotto\nInserisci il codice");
+										codice=sc.nextLine();
+										System.out.println("Inserisci la descrizione");
+										descrizione=sc.nextLine();
+										System.out.println("Inserisci il prezzo");
+										prezzo=Float.parseFloat(sc.nextLine());
+										System.out.println("Inserisci la quantità");
+										quantità= Integer.parseInt(sc.nextLine());
+										n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
+										break;
+									case "2":									// Elenco dei prodotti disponibili
+										System.out.println("\nQuesti sono i nostri prodotti disponibili");
+										n.elencoProdotti();
+										break;
+									case "3":									// Applica uno sconto
+										System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
+										codice=sc.nextLine();
+										System.out.println("Inserire lo sconto voluto");
+										sconto=Float.parseFloat(sc.nextLine());
+										n.applicaSconto(codice,sconto);
+										break;
+									default:
+										System.out.println("Scelta non valida");
+										break;
+									}
 							
-							System.out.println("\nVuoi continuare ad operare? (s/n)");
-							risposta=sc.nextLine();
-							}while (risposta.equals("s"));
+								System.out.println("\nVuoi continuare ad operare? (s/n)");
+								risposta=sc.nextLine();
+							}	while (risposta.equals("s"));
 							break;
-						case "Cliente":
 							
+						case "Cliente":	// Azioni possibili dall'account cliente
+							do
+							{
+								System.out.println("\n\n\n1 - Elenco prodotti");
+								System.out.println("2 - Vendita prodotti");
+								System.out.print("\nChe operazione vuoi compiere?");
+
+								risposta = sc.nextLine();
+								switch (risposta) 
+								{
+									case "1":									// Elenco dei prodotti disponibili
+										System.out.println("\nQuesti sono i nostri prodotti disponibili");
+										n.elencoProdotti();
+										break;
+									case "2": 									// Aggiungi al carrello
+										do
+										{
+											System.out.println("\nI prodotti all'interno dello store sono i seguenti");
+											n.elencoProdotti();
+											System.out.println("Quale prodotto vuoi comperare?");
+											// inserire codice e quantità
+											System.out.println("\nInserire il codice del prodotto da inserire nel carrello");
+											codice=sc.nextLine();
+											// visualizziamo il prodotto desiderato
+											System.out.println("\nCodice prodotto: "+ codice +"\tDescrizione: "+ n.prodottiMagazzino.get(codice).getDescrizione());
+											System.out.println("Prezzo: " + n.prodottiMagazzino.get(codice).getPrezzo() + "\tQuantità: " + n.prodottiMagazzino.get(codice).getQuantitàDisponibile());
+											// visualizza un possibile sconto
+											if (n.prodottiMagazzino.get(codice).getSconto()>0)
+											{
+												System.out.println("\nSconto su questo articolo:");
+												n.visualizzaSconto(codice);
+											}
+											// inserire la quantità richiesta
+											System.out.println("\nInserire la quantità del prodotto da inserire nel carrello");
+											quantità=Integer.parseInt(sc.nextLine());
+											c.aggiungiCarrello(codice, quantità);	
+											System.out.println("\nQuesti sono i prodotti nel carrello");
+											c.elencoProdottiCarrello();
+											System.out.println("Vuoi terminare la spesa? (s/n)");
+											risposta=sc.nextLine();
+										}	while (risposta.equals("n"));
+								
+										System.out.println("Confermare l'ordine per procedere al pagamento (s/n)");
+										risposta=sc.nextLine();
+										if (risposta.equalsIgnoreCase("s"))
+										{
+											c.confermaCarrello();
+											System.out.println("\nCosto totale: ");
+											c.calcoloSpesa(costoTotale);
+										}
+										break;
+										
+									default:
+										System.out.println("Scelta non valida");
+										break;
+									}
+							
+								System.out.println("\nVuoi fare altro? (s/n)");
+								risposta=sc.nextLine();
+							}	while (risposta.equals("s"));
 							break;
 					}
 				}
 				else
-					System.out.println("Password non valida, vuoi riprovare? (s/n)");
+					System.out.println("Password non valida");
 			}
 			else
-				System.out.println("Username non valido, vuoi riprovare? (s/n)");
+				System.out.println("Username non valido");
+			System.out.println("Vuoi tornare al menu principale? (s/n)");
 			risposta=sc.nextLine();
 		}	while (risposta.equalsIgnoreCase("s"));
-		
-		
-		do
-		{
-		System.out.println("\n\n\n1 - Inserimento prodotto");
-		System.out.println("2 - Elenco prodotti");
-		System.out.println("3 - Applica sconto");
-		System.out.println("4 - Vendita prodotti");
-		System.out.print("\nChe operazione vuoi compiere?");
-
-		risposta = sc.nextLine();
-		switch (risposta) 
-		{
-			case "1":									// Inserimento prodotti
-				System.out.println("\nInserisci la Password");
-				risposta=sc.nextLine();
-				if (risposta.equals("EnzoSan"))
-				{
-					System.out.println("Segui le indicazioni per aggiungere il prodotto\nInserisci il codice");
-					codice=sc.nextLine();
-					System.out.println("Inserisci la descrizione");
-					descrizione=sc.nextLine();
-					System.out.println("Inserisci il prezzo");
-					prezzo=Float.parseFloat(sc.nextLine());
-					System.out.println("Inserisci la quantità");
-					quantità= Integer.parseInt(sc.nextLine());
-					n.aggiungiProdotto(codice, descrizione, prezzo, quantità);
-				}
-				
-				break;
-			case "2":									// Elenco dei prodotti disponibili
-				System.out.println("\nQuesti sono i nostri prodotti disponibili");
-				n.elencoProdotti();
-				break;
-			case "3":									// Applica uno sconto
-				System.out.println("\nInserisci la Password");
-				risposta=sc.nextLine();
-				if (risposta.equals("EnzoSan"))
-				{
-					System.out.println("Inserisci il codice del prodotto a cui vuoi cambiare lo sconto");
-					codice=sc.nextLine();
-					System.out.println("Inserire lo sconto voluto");
-					sconto=Float.parseFloat(sc.nextLine());
-					n.applicaSconto(codice,sconto);
-				}
-				break;
-			case "4": 									// Aggiungi al carrello
-				do
-				{
-					System.out.println("\nI prodotti all'interno dello store sono i seguenti");
-					n.elencoProdotti();
-					System.out.println("Quale prodotto vuoi comperare?");
-					// inserire codice e quantità
-					System.out.println("\nInserire il codice del prodotto da inserire nel carrello");
-					codice=sc.nextLine();
-					// visualizziamo il prodotto desiderato
-					System.out.println("\nCodice prodotto: "+ codice +"\tDescrizione: "+ n.prodottiMagazzino.get(codice).getDescrizione());
-					System.out.println("Prezzo: " + n.prodottiMagazzino.get(codice).getPrezzo() + "\tQuantità: " + n.prodottiMagazzino.get(codice).getQuantitàDisponibile());
-					// visualizza un possibile sconto
-					if (n.prodottiMagazzino.get(codice).getSconto()>0)
-					{
-						System.out.println("\nSconto su questo articolo:");
-						n.visualizzaSconto(codice);
-					}
-					// inserire la quantità richiesta
-					System.out.println("\nInserire la quantità del prodotto da inserire nel carrello");
-					quantità=Integer.parseInt(sc.nextLine());
-					c.aggiungiCarrello(codice, quantità);	
-					System.out.println("\nQuesti sono i prodotti nel carrello");
-					c.elencoProdottiCarrello();
-					System.out.println("Vuoi terminare la spesa? (s/n)");
-					risposta=sc.nextLine();
-				}	while (risposta.equals("n"));
-			
-				System.out.println("Confermare l'ordine per procedere al pagamento (s/n)");
-				risposta=sc.nextLine();
-				if (risposta.equalsIgnoreCase("s"))
-				{
-					c.confermaCarrello();
-					System.out.println("\nCosto totale: ");
-					c.calcoloSpesa(costoTotale);
-				}
-			
-				break;
-			default:
-				System.out.println("Scelta non valida");
-				break;
-			}
-		
-		System.out.println("\nVuoi fare altro? (s/n)");
-		risposta=sc.nextLine();
-		}while (risposta.equals("s"));
 		
 		System.out.println("Arrivederci");
 		sc.close();
